@@ -24,19 +24,19 @@ variable "services" {
 variable "tenant_name" {
   description = "The name of the tenant"
   type        = string
-  default     = "consul-terraform-sync"
+  default     = "app-terraform-sync"
 }
 
 variable "pool_name" {
   description = "The name of the web pool where consul-terraform-sync services will reside"
   type        = string
-  default     = "web_pool"
+  default     = "app_pool"
 }
 
 variable "tag_name" {
   description = "The name of the tag to create and use for dynamic address group filtering of Consul service IPs"
   type        = string
-  default     = "consul-terraform-sync"
+  default     = "app-terraform-sync"
 }
 
 variable "as3template_path" {
