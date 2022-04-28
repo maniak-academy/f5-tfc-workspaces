@@ -29,7 +29,7 @@ data "template_file" "as3_init_fs" {
   }
 }
 
-resource "bigip_as3" "as3-example-consul" {
+resource "bigip_as3" "as3-consul" {
   as3_json = jsonencode(jsondecode(data.template_file.as3_init_fs.rendered))
 }
 
