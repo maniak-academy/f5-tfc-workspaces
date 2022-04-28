@@ -2,14 +2,15 @@ variable "services" {
   description = "Consul services monitored by consul-terraform-sync"
   type = map(
     object({
-      id                    = string
-      name                  = string
-      address               = string
-      port                  = number
-      status                = string
-      meta                  = map(string)
-      tags                  = list(string)
-      namespace             = string
+      id        = string
+      name      = string
+      address   = string
+      port      = number
+      status    = string
+      meta      = map(string)
+      tags      = list(string)
+      namespace = string
+
       node                  = string
       node_id               = string
       node_address          = string
@@ -20,45 +21,32 @@ variable "services" {
   )
 }
 
-
-#
-# Your module for can include input variables to be used by CTS operators for
-# customizing the module based on their infastructure. CTS supports both
-# optional and required variables.
-#
-variable "address_group_prefix" {
-  description = "Prefix added to each address group name"
+variable "tenant_name" {
+  description = "The name of the tenant"
   type        = string
-
-  # Set the default argument to a default value to declare an optional variable.
-  # Omit the default argument for required ariables.
-  default = ""
-
-  # Set the sensitive flag for input variables that contain secret or sensitive
-  # values. When set, Terraform will redact the value from output when Terraform
-  # commands are run.
-  sensitive = false
+  default     = "consul-terraform-sync"
 }
 
-variable "address_group_tags" {
-  description = "List of tag names to add to each address group for filtering of Consul service IPs"
+variable "pool_name" {
+  description = "The name of the web pool where consul-terraform-sync services will reside"
+  type        = string
+  default     = "web_pool"
+}
+
+variable "tag_name" {
+  description = "The name of the tag to create and use for dynamic address group filtering of Consul service IPs"
+  type        = string
+  default     = "consul-terraform-sync"
+}
+
+variable "as3template_path" {
+  description = "path of as3 template"
+  //type        = string
+  default     = ""
+}
+
+variable "consul_service_tags" {
+  description = "Adminstrative tags to add to Consul service address objects. These are existing tags on BIG-IP."
   type        = list(string)
   default     = []
 }
-
-variable bigip_host {
-  description = "The F5 BIG-IP hostname or IP address"
-  type        = string
-  default     = "192.168.86.33"
-}
-variable bigip_user {
-  description = "The F5 BIG-IP username"
-  type        = string
-  default     = "admin"
-}
-variable bigip_passwd {
-  description = "The F5 BIG-IP password"
-  type        = string
-  default     = "W3lcome098!"
-}
-
