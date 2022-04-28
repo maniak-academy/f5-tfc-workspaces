@@ -30,7 +30,7 @@ variable "tenant_name" {
 variable "pool_name" {
   description = "The name of the web pool where consul-terraform-sync services will reside"
   type        = string
-  default     = "app_pool"
+  default     = "frontend_pool"
 }
 
 variable "tag_name" {
