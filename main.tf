@@ -16,6 +16,7 @@ provider "bigip" {
 provider "consul" {
   address    = "192.168.86.70:8500"
   datacenter = "maniak-academy"
+  token = "0d91fc09-50d8-1abf-dc94-ab3534167f79"
 }
 
 module bigip-consul-terraform-sync {
