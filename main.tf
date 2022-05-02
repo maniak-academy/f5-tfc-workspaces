@@ -18,7 +18,6 @@ data "template_file" "as3_init_service" {
     pool_name         = format("%s-pool", each.key)
     service_address   = jsonencode(distinct(each.value.*.node_address))
     service_port      = jsonencode(element(distinct(each.value.*.port), 0))
-    
   }
 }
 
