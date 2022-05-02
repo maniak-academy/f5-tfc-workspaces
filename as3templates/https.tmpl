@@ -7,7 +7,7 @@
             "virtualAddresses": ${vs_server_address},
             "virtualPort": ${vs_server_port},
             "pool": "${pool_name}",
-            "serverTLS": "webtls"
+            "serverTLS": "${client_ssl}"
         },
         "${pool_name}": {
             "class": "Pool",
@@ -21,7 +21,7 @@
                 "shareNodes": true
             }]
         },
-        "webtls": {
+        "${client_ssl}": {
           "class": "TLS_Server",
           "certificates": [{
             "certificate": "webcert"
