@@ -1,8 +1,9 @@
 ,
 "${app_name}": {
         "class": "Application",
+        "template": "https",
         "serviceMain": {
-            "class": "Service_Generic",
+            "class": "Service_HTTPS",
             "virtualAddresses": ${vs_server_address},
             "virtualPort": ${vs_server_port},
             "pool": "${pool_name}",
