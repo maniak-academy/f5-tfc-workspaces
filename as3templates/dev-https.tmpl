@@ -11,6 +11,11 @@
             "snat": "auto",
             "persistenceMethods": ["${cookie_profile}"]
         },
+        "${cookie_profile}":{
+            "class": "Persist",
+            "persistenceMethod": "cookie",
+            "cookieName": "${cookie_profile}"
+        },
         "${pool_name}": {
             "class": "Pool",
             "loadBalancingMode": "predictive-node",
