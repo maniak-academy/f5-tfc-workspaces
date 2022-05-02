@@ -1,31 +1,45 @@
-,
-"${app_name}": {
-        "class": "Application",
-        "serviceMain": {
+{
+    "class": "AS3",
+    "action": "deploy",
+    "persist": true,
+    "declaration": {
+      "class": "ADC",
+      "schemaVersion": "3.0.0",
+      "id": "123abc",
+      "label": "Sample 2",
+      "remark": "HTTPS with predictive-node pool",
+      "JuiceShop": {
+        "class": "Tenant",
+        "A1": {
+          "class": "Application",
+          "service": {
             "class": "Service_HTTPS",
-            "virtualAddresses": ${vs_server_address},
-            "virtualPort": ${vs_server_port},
-            "pool": "${pool_name}",
+            "virtualAddresses": [
+              "10.10.1.100"
+            ],
+            "pool": "web_pool",
             "serverTLS": "webtls"
-        },
-        "${pool_name}": {
+          },
+          "web_pool": {
             "class": "Pool",
             "loadBalancingMode": "predictive-node",
             "monitors": [
-                "http"
+              "http"
             ],
             "members": [{
-                "servicePort": ${service_port},
-                "serverAddresses": ${service_address},
-                "shareNodes": true
+              "servicePort": 80,
+              "serverAddresses": [
+                "10.10.1.99",
+                "10.10.1.98"
+              ]
             }]
-        },
-        "webtls": {
-          "class": "TLS_Server",
-          "certificates": [{
-            "certificate": "webcert"
-          }]
-        },
+          },
+          "webtls": {
+            "class": "TLS_Server",
+            "certificates": [{
+              "certificate": "webcert"
+            }]
+          },
           "webcert": {
             "class": "Certificate",
             "remark": "in practice we recommend using a passphrase",
@@ -36,5 +50,7 @@
               "protected": "eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0"
             }
           }
+        }
+      }
     }
-    
+  }
