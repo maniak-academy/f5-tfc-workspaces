@@ -22,7 +22,7 @@ consul {
 driver "terraform-cloud" {
   hostname = "https://app.terraform.io"
   organization = "sebbycorp"
-  token        = "J82asfzGwShlZA.atlasv1.zrjJVmzF9vEPBEVmadpdyoDEWqTfqrAjOVrTPD64QebQBQW9Xu0yCJ5uGPANiPAzzjU"
+  token        = "${TFC_TOKEN}"
       required_providers {
         bigip = {
             source = "F5Networks/bigip"
