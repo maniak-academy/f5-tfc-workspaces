@@ -7,7 +7,13 @@
             "virtualAddresses": ${vs_server_address},
             "virtualPort": ${vs_server_port},
             "pool": "${pool_name}",
-            "serverTLS": "${client_ssl}"
+            "serverTLS": "${client_ssl}",
+            "snat": "auto",
+            "persistenceMethods": ["${cookie_profile}"]
+        },
+        "${cookie_profile}":{
+            "class": "Persist",
+            "cookieName": "${cookie_profile}",
         },
         "${pool_name}": {
             "class": "Pool",

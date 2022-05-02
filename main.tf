@@ -19,6 +19,7 @@ data "template_file" "as3_init_service" {
     service_address   = jsonencode(distinct(each.value.*.node_address))
     service_port      = jsonencode(element(distinct(each.value.*.port), 0))
     client_ssl        = format("%s-clientssl", each.key)
+    cookie_profile    = format("%s-cookie", each.key)
   }
 }
 
