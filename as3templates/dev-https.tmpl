@@ -9,12 +9,8 @@
             "pool": "${pool_name}",
             "serverTLS": "${client_ssl}",
             "snat": "auto",
-            "persistenceMethods": ["${cookie_profile}"]
-        },
-        "${cookie_profile}":{
-            "class": "Persist",
-            "persistenceMethod": "cookie",
-            "cookieName": "${cookie_profile}"
+            "iRules": ["Maintenance_iRule"],
+            "persistenceMethods": ["cookie"]
         },
         "${pool_name}": {
             "class": "Pool",
