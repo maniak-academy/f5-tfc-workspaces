@@ -45,14 +45,14 @@ locals {
   # Create a map of service names to instance IDs
   service_ids = transpose({
     for id, s in var.services : id => [s.name]
-    if lookup(s.meta, "VSIP", "") != "" && lookup(s.meta, "VSPORT", "") != ""
+    if lookup(s.meta, "VSIP", "") != "" && lookup(s.meta, "VSPORT", "") != "" && lookup(s.meta, "DOMAIN", "") != ""
   })
 
   # Group service instances by name
   grouped = { for name, ids in local.service_ids :
     name => [
       for id in ids : var.services[id]
-      if lookup(var.services[id].meta, "VSIP", "") != "" && lookup(var.services[id].meta, "VSPORT", "") != ""
+      if lookup(var.services[id].meta, "VSIP", "") != "" && lookup(var.services[id].meta, "VSPORT", "") != "" && lookup(s.meta, "DOMAIN", "") != ""
     ]
   }
 
