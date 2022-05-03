@@ -21,6 +21,10 @@ data "template_file" "as3_init_service" {
     service_port      = jsonencode(element(distinct(each.value.*.port), 0))
     client_ssl        = format("%s-clientssl", each.key)
     cookie_profile    = format("%s-cookie", each.key)
+    certificate        = var.certificate
+    privateKey        = var.privateKey
+    passphraseciphertext        = var.passphraseciphertext
+    passphraseprotected        = var.passphraseprotected
   }
 }
 

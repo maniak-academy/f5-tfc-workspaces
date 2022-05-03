@@ -38,11 +38,11 @@
           "${domain}": {
             "class": "Certificate",
             "remark": "in practice we recommend using a passphrase",
-            "certificate": "${var.certificate},
-            "privateKey": "${var.privateKey},
+            "certificate": "${certificate},
+            "privateKey": "${privateKey},
             "passphrase": {
-              "ciphertext": "${var.passphraseciphertext},
-              "protected": "${var.passphraseprotected},
+              "ciphertext": "${passphraseciphertext},
+              "protected": "${passphraseprotected},
             }
           }
     }
