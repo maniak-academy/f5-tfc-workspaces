@@ -14,7 +14,7 @@ data "template_file" "as3_init_service" {
   vars = {
     app_name          = each.key
     vs_server_address = jsonencode(distinct(each.value.*.meta.VSIP))
-    domain            = jsonencode(distinct(each.value.*.meta.DOMAIN))
+    domain            = format("%s-domain", each.key)
     vs_server_port    = tonumber(distinct(each.value.*.meta.VSPORT)[0])
     pool_name         = format("%s-pool", each.key)
     service_address   = jsonencode(distinct(each.value.*.node_address))
