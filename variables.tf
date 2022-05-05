@@ -50,3 +50,11 @@ variable "consul_service_tags" {
   type        = list(string)
   default     = []
 }
+
+
+variable login_approle_role_id {
+  default     = "ab041c65-c8b0-5e20-da6a-2174f7048380"
+}
+variable login_approle_secret_id {
+  default   = "1279fe77-0706-2dc8-26a3-5e11e72d054b"
+}
