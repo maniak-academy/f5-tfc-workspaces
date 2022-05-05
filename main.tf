@@ -19,7 +19,7 @@ provider "vault" {
 
 resource "vault_pki_secret_backend_cert" "app" {
 
-  backend = "pki_int/issue/"
+  backend = "pki_int"
   name = "example-dot-com"
 
   common_name = "test.example.com"
