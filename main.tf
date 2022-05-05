@@ -13,6 +13,7 @@ terraform {
 
 
 provider "vault" {
+  address = "http://192.168.86.69:8200"
   auth_login {
     path = "auth/approle/login"
 
