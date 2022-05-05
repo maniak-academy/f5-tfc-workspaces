@@ -31,9 +31,10 @@
         },
         "${client_ssl}": {
           "class": "TLS_Server",
-          "certificates": {
-            "certificate": "/Common/Shared/webcert"
-          }
+          "certificates": [{
+            "certificate": "/Common/Shared/webcert.crt",
+            "privateKey": "/Common/Shared/webcert.key"
+          }]
         }
     }
     
