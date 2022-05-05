@@ -14,14 +14,7 @@ terraform {
 
 provider "vault" {
   address = "http://192.168.86.69:8200"
-  auth_login {
-    path = "auth/approle/login"
-
-    parameters = {
-      role_id   = var.login_approle_role_id
-      secret_id = var.login_approle_secret_id
-    }
-  }
+  token = "hvs.Wj7FJ8yYwUY8HrHGZGkrUB4x"
 }
 
 resource "vault_pki_secret_backend_cert" "app" {
