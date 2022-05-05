@@ -31,10 +31,9 @@
         },
         "${client_ssl}": {
           "class": "TLS_Server",
-          "certificates": [{
-            "certificate": "/Common/Shared/webcert",
-            "chainCA": "/Common/Shared/webcert-bundle"
-          }]
+          "certificates": {
+            "certificate": "/Common/Shared/webcert"
+          }
         }
     }
     
