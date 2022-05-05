@@ -23,6 +23,14 @@ provider "vault" {
   }
 }
 
+resource "vault_pki_secret_backend_cert" "app" {
+
+  backend = "pki_int/issue/"
+  name = "example-dot-com"
+
+  common_name = "test.example.com"
+}
+
 data "template_file" "as3_init_service" {
   for_each = local.grouped
   template = fileexists("${var.as3template_path}/${distinct(each.value.*.meta.AS3TMPL)[0]}.tmpl") ? file("${var.as3template_path}/${distinct(each.value.*.meta.AS3TMPL)[0]}.tmpl") : file("${path.module}/as3templates/${distinct(each.value.*.meta.AS3TMPL)[0]}.tmpl") 
