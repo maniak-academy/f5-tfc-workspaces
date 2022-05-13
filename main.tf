@@ -4,9 +4,24 @@ terraform {
       source = "F5Networks/bigip"
       version = "1.13.1"
     }
+    vault = {
+      source = "hashicorp/vault"
+      version = "3.5.0"
+    }
   }
 }
 
+
+provider "vault" {
+  address = "http://192.168.86.69:8200"
+  token = "hvs.Wj7FJ8yYwUY8HrHGZGkrUB4x"
+}
+
+resource "vault_pki_secret_backend_cert" "app" {
+  backend = "pki_int"
+  name = "example-dot-com"
+  common_name = "test.example.com"
+}
 
 data "template_file" "as3_init_service" {
   for_each = local.grouped
